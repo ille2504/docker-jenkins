@@ -3,13 +3,13 @@ pipeline {
         node {
             label 'docker-agent-python'
             }
+    }
     parameter {
         choise(name: 'VERSION', choise: ['1.0.0', '1.0.2'], description: '')
     }
     environment {
         NEW_VERSION = '1.0.0'
     }
-      }
     stages {
         stage('Build') {
             steps {
