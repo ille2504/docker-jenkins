@@ -3,14 +3,18 @@ pipeline {
         node {
             label 'docker-agent-python'
             }
-      }
-    triggers {
-        pollSCM '*/5 * * * *'
+    parameter {
+        choise(name: 'VERSION', choise ['1.0.0', '1.0.2'], description '')
     }
+    environment {
+        NEW_VERSION = '1.0.0'
+    }
+      }
     stages {
         stage('Build') {
             steps {
                 echo "Building.."
+                echo "The new version: ${NEW_VERSION}"
                 sh '''
                 cd myapp
                 pip install -r requirements.txt
@@ -34,6 +38,17 @@ pipeline {
                 echo "doing delivery stuff.."
                 '''
             }
+        }
+    }
+    post {
+        always {
+            echo 'FINISH'
+        }
+        success {
+            echo 'SUCCESS'
+        }
+        failure {
+            echo 'FAILURE'
         }
     }
 }
