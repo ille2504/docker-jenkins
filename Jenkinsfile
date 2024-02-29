@@ -4,7 +4,7 @@ pipeline {
             label 'docker-agent-python'
             }
     }
-    parameter {
+    parameters {
         choise(name: 'VERSION', choise: ['1.0.0', '1.0.2'], description: '')
     }
     environment {
