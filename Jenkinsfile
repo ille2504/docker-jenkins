@@ -5,10 +5,19 @@ pipeline {
             }
     }
     parameters {
-        choise(name: 'VERSION', choise: ['1.0.0', '1.0.2'], description: '')
+        choice(name: 'VERSION', choice: ['1.0.0', '1.0.2'], description: '')
     }
     environment {
         NEW_VERSION = '1.0.0'
+    }
+    stages {
+        stage('init') {
+            steps {
+                script {
+                    gv = load 'script.groovy'
+                }
+            }
+        }
     }
     stages {
         stage('Build') {
