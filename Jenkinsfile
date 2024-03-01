@@ -6,6 +6,9 @@ pipeline {
             label 'docker-agent-python'
             }
     }
+       triggers {
+        pollSCM '*/5 * * * *'
+    }
     environment {
         NEW_VERSION = '1.0.0'
     }
