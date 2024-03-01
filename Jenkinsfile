@@ -16,7 +16,7 @@ pipeline {
         stage('init') {
             steps {
                 script {
-                    gv.sayHello()
+                    gv = load "script.groovy"
                 }
             }
         }
@@ -28,6 +28,9 @@ pipeline {
                 cd myapp
                 pip install -r requirements.txt
                 '''
+                script {
+                    gv.sayHello()
+                }
             }
         }
         stage('Test') {
