@@ -1,3 +1,5 @@
+def gv
+
 pipeline {
     agent { 
         node {
@@ -14,7 +16,7 @@ pipeline {
         stage('init') {
             steps {
                 script {
-                    gv = load 'script.groovy'
+                    gv.sayHello()
                 }
             }
         }
