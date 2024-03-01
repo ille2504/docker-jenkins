@@ -5,7 +5,7 @@ pipeline {
             }
     }
     parameters {
-        choice(name: 'VERSION', choice: ['1.0.0', '1.0.2'], description: '')
+        choice(name: 'VERSION', choices: ['1.0.0', '1.0.2'], description: '')
     }
     environment {
         NEW_VERSION = '1.0.0'
@@ -18,8 +18,6 @@ pipeline {
                 }
             }
         }
-    }
-    stages {
         stage('Build') {
             steps {
                 echo "Building.."
